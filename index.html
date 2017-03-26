@@ -38,6 +38,17 @@
       console.log("Loading "+href);
       includeDiv.load(href);
     }
+    var vision, process, output;
+    
+    function setVision(value){
+      vision = value;
+    }
+    function setProcess(value){
+      process = value;
+    }
+    function setOutput(value){
+      output = value;
+    }
 
     $(document).ready(function(){
       if(location.hash.slice(1) == ""){
