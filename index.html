@@ -23,20 +23,28 @@
   <body>
     <h1>TeamMeme</h1>
     <div id="include">
-      <h2>Content here</h2>
-      <a href="#new">New content</a>
+
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type="text/javascript"> 
+    <script type="text/javascript">
+    function loadContent(page){
       var includeDiv = $("#include");
-      $(window).on('hashchange', function() {
-          var href = location.hash.slice(1) +".html";
-          includeDiv.load('include/' + href);
-      });
+      var href = 'include/' + page + ".html";
+      console.log("Loading "+href);
+      includeDiv.load(href);
+    }
+
+    $(document).ready(function(){
+      if(location.hash.slice(1) == ""){
+        loadContent('home');
+      }
+    });
+
+    $(window).bind('hashchange', loadContent(location.hash.slice(1))).trigger('hashchange');
     </script>
   </body>
 </html>
