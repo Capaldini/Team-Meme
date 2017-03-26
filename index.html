@@ -39,15 +39,48 @@
       includeDiv.load(href);
     }
     var vision, process, output;
-    
     function setVision(value){
       vision = value;
+      loadContent('process');
     }
     function setProcess(value){
       process = value;
+      loadContent('output');
     }
     function setOutput(value){
       output = value;
+      loadContent('results_ready');
+    }
+    function loadResult(){
+      if(vision > 3){
+        if(process > 3){
+          if(output > 3){
+            loadContent('success');
+          } else {
+            loadContent('academic');
+          }
+        } else {
+          if(output > 3){
+            loadContent('brute');
+          } else {
+            loadContent('dreamer');
+          }
+        }
+      } else {
+        if(process > 3){
+          if(output > 3){
+            loadContent('merchant');
+          } else {
+            loadContent('bureaucrat');
+          }
+        } else {
+          if(output > 3){
+            loadContent('grunt');
+          } else {
+            loadContent('loser');
+          }
+        }
+      }
     }
 
     $(document).ready(function(){
